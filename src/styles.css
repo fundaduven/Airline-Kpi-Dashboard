@@ -1,0 +1,84 @@
+body {
+  background: url("https://images.pexels.com/photos/412462/pexels-photo-412462.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260")
+    no-repeat center center fixed;
+}
+
+.Polaris-Page {
+  padding: 0;
+}
+
+.Polaris-Heading {
+  color: #008080;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: verdana;
+}
+
+.card {
+  font-size: 15px;
+  font-family: verdana;
+}
+
+.Polaris-DataTable__Cell--header {
+  font-weight: bold;
+  color: #008080;
+}
+.Polaris-DataTable__Cell--verticalAlignTop {
+  font-size: 17px;
+  line-height: 30px;
+  font-family: verdana;
+  padding-left: 1.5em;
+  text-align: center;
+}
+
+#cards {
+  padding: 1em;
+  column-gap: 3vw;
+  column-count: 2;
+}
+
+.Polaris-Card {
+  height: 100%;
+  margin-top: 0;
+  opacity: 0.7;
+}
+
+.Polaris-Header-Title {
+  font-family: verdana;
+  color: #25524a;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 767px) {
+  #cards {
+    padding-top: 80px;
+    display: block;
+    margin-bottom: 50px;
+  }
+  .Polaris-Card {
+    margin-top: 2rem;
+  }
+}
+
+.pagination,
+.pagination-button,
+.selected-button {
+  margin-top: 1em;
+  margin-bottom: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: verdana;
+  font-size: 16px;
+  border-radius: 20%;
+}
+
+.pagination-button {
+  background: rgb(80, 135, 139);
+  border-color: white;
+  width: 40px;
+  height: 30px;
+}
+.selected-button {
+  background: rgb(130, 147, 161);
+}
