@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppProvider, Page, Card, DataTable } from "@shopify/polaris";
 import enTranslations from "@shopify/polaris/locales/en.json";
-
+import SearchBox from "./SearchBox";
 import Pagination from "./Pagination";
 import { AirlineApi } from "./AirlineApi";
 
@@ -10,7 +10,7 @@ type passengerType = {
   name: string;
   trips: number;
 };
-type rowsArray = [string, string, number, string];
+type passengerRowData = [string, string, number, string];
 
 type passengerResponseType = {
   totalPassengers: number;
@@ -19,12 +19,13 @@ type passengerResponseType = {
 };
 
 function PassengerData() {
-  const [rows, setRows] = useState(Array<rowsArray>());
+  const [rows, setRows] = useState(Array<passengerRowData>());
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [totalPassengers, setTotalPassengers] = useState(0);
+  const [searchField, setSearchField] = useState("");
 
   const passengerUrl =
     "https://api.instantwebtools.net/v1/passenger?page=" +
@@ -34,6 +35,19 @@ function PassengerData() {
   // Pagination related variables
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  // Search related variables
+  const search = (query: string) => setSearchField(query);
+  let filteredPassengers = function (): Array<passengerRowData> {
+    let a = rows.filter((passenger) => {
+      return passenger[1].includes(searchField.toLowerCase());
+    });
+    return a;
+  };
+  useEffect(() => {
+    filteredPassengers();
+  }, [searchField]);
+
+  // Fetch passenger data
   useEffect(() => {
     const fetchPassengerData = async () => {
       setHasError(false);
@@ -52,13 +66,13 @@ function PassengerData() {
   }, [currentPage]);
 
   const passengerData = (passengers: Array<passengerType>) => {
-    const rowItem: Array<rowsArray> = [];
-    passengers.map((f: passengerType) => {
-      const item: rowsArray = ["", "", 0, ""];
-      item[0] = f._id;
-      item[1] = f.name;
-      item[2] = f.trips;
-      item[3] = (f.trips * 199).toLocaleString() + " €";
+    const rowItem: Array<passengerRowData> = [];
+    passengers.map((passenger: passengerType) => {
+      const item: passengerRowData = ["", "", 0, ""];
+      item[0] = passenger._id;
+      item[1] = passenger.name;
+      item[2] = passenger.trips;
+      item[3] = (passenger.trips * 199).toLocaleString() + " €";
       rowItem.push(item);
     });
     setRows(rowItem);
@@ -68,6 +82,7 @@ function PassengerData() {
     <div>Currently there is no comments.</div>
   ) : (
     <>
+      <SearchBox onChange={search} />
       <AppProvider i18n={enTranslations}>
         <Page title="Passenger Data">
           <Card>
