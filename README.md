@@ -13,3 +13,8 @@ Clone the project and basically call
 ### `npm install` 
 then 
 ### `npm start` 
+
+
+## Upcoming Features
+
+Passenger search filter is in WIP. You can find it in the pull request. 
