@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./containers/App";
 import "@shopify/polaris/dist/styles.css";
-import "./styles.css";
+import "./style/styles.css";
 
 ReactDOM.render(
   <React.StrictMode>

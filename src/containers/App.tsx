@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import PassengerData from "./PassengerData";
-import Cards from "./Cards";
-import Header from "./Header";
+import PassengerData from "../components/PassengerData";
+import Cards from "../components/Cards";
+import Header from "../components/Header";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
