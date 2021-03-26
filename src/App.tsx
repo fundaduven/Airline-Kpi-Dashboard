@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PassengerData from "./PassengerData";
 import Cards from "./Cards";
+import Header from "./Header";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,6 +15,7 @@ function App() {
         <div> Something went wrong. </div>
       ) : (
         <div>
+          <Header />
           <Cards />
           <PassengerData />
         </div>

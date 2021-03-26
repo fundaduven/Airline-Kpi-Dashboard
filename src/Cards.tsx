@@ -21,17 +21,6 @@ type passengerType = {
   trips: number;
 };
 
-type DTState = {
-  totalPassengers: number;
-  totalPages: number;
-  data: passengerType[];
-  rows: Array<rowsArray>;
-  selectedPage: number;
-  pagination: number[];
-  showStart: number;
-  showEnd: number;
-};
-
 function Cards() {
   const [airlines, setAirlines] = useState(Array<airline>());
   const [currentPage, setCurrentPage] = useState(0);
@@ -43,7 +32,6 @@ function Cards() {
   const [sales, setSales] = useState(0);
 
   const passengerUrl = "https://api.instantwebtools.net/v1/passenger";
-
   const airlanesUrl = "https://api.instantwebtools.net/v1/airlines";
 
   useEffect(() => {
@@ -66,21 +54,20 @@ function Cards() {
 
   const passengerData = (passengers: Array<passengerType>) => {
     const rowItem: Array<rowsArray> = [];
-    const pagination: number[] = [];
-    passengers.map((f: passengerType) => {
+    passengers.map((passenger: passengerType) => {
       const item: rowsArray = ["", "", 0, ""];
-      item[0] = f._id;
-      item[1] = f.name;
-      item[2] = f.trips;
-      item[3] = (f.trips * 199).toLocaleString() + " €";
+      item[0] = passenger._id;
+      item[1] = passenger.name;
+      item[2] = passenger.trips;
+      item[3] = (passenger.trips * 199).toLocaleString() + " €";
       rowItem.push(item);
     });
     setRows(rowItem);
 
     let totalTrips = 0;
-    passengers.forEach((f: { trips: number }) => {
-      if (typeof f.trips === "number") {
-        totalTrips += f.trips;
+    passengers.forEach((passenger: { trips: number }) => {
+      if (typeof passenger.trips === "number") {
+        totalTrips += passenger.trips;
       }
     });
     setTotalTrips(totalTrips);
@@ -99,7 +86,7 @@ function Cards() {
 
   return (
     <AppProvider i18n={enTranslations}>
-      <Page title="Airline Data">
+      <Page>
         <div id="cards">
           <Card title="Total Number of Trips" sectioned>
             <p className="card">{totalTrips.toLocaleString()}</p>

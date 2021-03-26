@@ -69,7 +69,7 @@ function PassengerData() {
   ) : (
     <>
       <AppProvider i18n={enTranslations}>
-        <Page title="Passenger Data">
+        <Page title="Data of All Passengers">
           <Card>
             <DataTable
               columnContentTypes={["text", "text", "numeric", "numeric"]}

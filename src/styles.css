@@ -3,6 +3,21 @@ body {
     no-repeat center center fixed;
 }
 
+header {
+  align-items: center;
+  text-align: center;
+  width: 100vw;
+  padding: 1.5em;
+  background: linear-gradient(200deg, white, transparent);
+  font-size: 24px;
+  text-transform: uppercase;
+  font-family: verdana;
+  color: #008080;
+}
+
+.header-title {
+  font-weight: bolder;
+}
 .Polaris-Page {
   padding: 0;
 }
@@ -47,6 +62,7 @@ body {
   font-family: verdana;
   color: #25524a;
   text-transform: uppercase;
+  padding-bottom: 1em;
 }
 
 @media screen and (max-width: 767px) {

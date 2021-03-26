@@ -1,6 +1,6 @@
 import React from "react";
 
-interface passengerProps {
+interface paginationProps {
   totalPassengers: number;
   totalPages: number;
   currentPage: number;
@@ -12,7 +12,7 @@ const Pagination = ({
   totalPages,
   currentPage,
   paginate,
-}: passengerProps) => {
+}: paginationProps) => {
   const pageNumbers = [];
 
   if (currentPage < 5) {
